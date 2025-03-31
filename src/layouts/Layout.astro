@@ -53,7 +53,7 @@ const structuredData = {
 
 <!doctype html>
 <html
-  lang=`${LOCALE.lang ?? "en"}`
+  lang={`${LOCALE.lang ?? "zh"}`}
   class={`${scrollSmooth && "scroll-smooth"}`}
 >
   <head>
@@ -63,7 +63,7 @@ const structuredData = {
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- General Meta Tags -->
+    <!-- 通用元标签 -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
@@ -76,7 +76,7 @@ const structuredData = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
 
-    <!-- Article Published/Modified time -->
+    <!-- 文章发布时间/修改时间 -->
     {
       pubDatetime && (
         <meta
@@ -101,13 +101,13 @@ const structuredData = {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
-    <!-- Google JSON-LD Structured data -->
+    <!-- Google JSON-LD 结构化数据 -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
     />
 
-    <!-- Google Font -->
+    <!-- Google 字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -118,9 +118,9 @@ const structuredData = {
     <meta name="theme-color" content="" />
 
     {
-      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
-      // include google-site-verification tag in the heading
-      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
+      // 如果环境变量中设置了 PUBLIC_GOOGLE_SITE_VERIFICATION，
+      // 则在头部包含 google-site-verification 标签
+      // 了解更多：https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
       googleSiteVerification && (
         <meta
           name="google-site-verification"

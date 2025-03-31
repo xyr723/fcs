@@ -1,33 +1,35 @@
 ---
-// Remove current url path and remove trailing slash if exists
+// 移除当前 URL 路径并移除末尾的斜杠（如果存在）
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
-// Get url array from path
-// eg: /tags/tailwindcss => ['tags', 'tailwindcss']
+// 从路径获取 URL 数组
+// 例如：/tags/tailwindcss => ['tags', 'tailwindcss']
 const breadcrumbList = currentUrlPath.split("/").slice(1);
 
-// if breadcrumb is Home > Posts > 1 <etc>
-// replace Posts with Posts (page number)
+// 如果面包屑是 首页 > 文章 > 1 <等>
+// 将 文章 替换为 文章（第 x 页）
 breadcrumbList[0] === "posts" &&
-  breadcrumbList.splice(0, 2, `Posts (page ${breadcrumbList[1] || 1})`);
+  breadcrumbList.splice(0, 2, `文章（第 ${breadcrumbList[1] || 1} 页）`);
 
-// if breadcrumb is Home > Tags > [tag] > [page] <etc>
-// replace [tag] > [page] with [tag] (page number)
+// 如果面包屑是 首页 > 标签 > [标签名] > [页码] <等>
+// 将 [标签名] > [页码] 替换为 [标签名]（第 x 页）
 breadcrumbList[0] === "tags" &&
   !isNaN(Number(breadcrumbList[2])) &&
   breadcrumbList.splice(
     1,
     3,
     `${breadcrumbList[1]} ${
-      Number(breadcrumbList[2]) === 1 ? "" : "(page " + breadcrumbList[2] + ")"
+      Number(breadcrumbList[2]) === 1
+        ? ""
+        : "（第 " + breadcrumbList[2] + " 页）"
     }`
   );
 ---
 
-<nav class="breadcrumb" aria-label="breadcrumb">
+<nav class="breadcrumb" aria-label="面包屑导航">
   <ul>
     <li>
-      <a href="/">Home</a>
+      <a href="/">首页</a>
       <span aria-hidden="true">&raquo;</span>
     </li>
     {
@@ -38,7 +40,6 @@ breadcrumbList[0] === "tags" &&
               class={`${index > 0 ? "lowercase" : "capitalize"}`}
               aria-current="page"
             >
-              {/* make the last part lowercase in Home > Tags > some-tag */}
               {decodeURIComponent(breadcrumb)}
             </span>
           </li>

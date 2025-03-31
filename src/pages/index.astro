@@ -23,13 +23,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
+      <h1>欢迎来到我的小天地 ✨</h1>
       <a
         target="_blank"
         href="/rss.xml"
         class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
+        aria-label="RSS 订阅"
+        title="RSS 订阅"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path
@@ -38,29 +38,26 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
           ></path><circle cx="6" cy="18" r="2"></circle>
         </svg>
-        <span class="sr-only">RSS Feed</span>
+        <span class="sr-only">RSS 订阅</span>
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        这里是一个充满温暖和创意的小天地 🌟
+        让我们一起分享生活、技术和有趣的故事。 希望这里能带给你一些灵感和快乐！
       </p>
       <p>
-        Read the blog posts or check
+        欢迎阅读我的博客文章，或者查看
         <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
           href="https://github.com/satnaing/astro-paper#readme"
         >
-          README
-        </LinkButton> for more info.
+          使用说明
+        </LinkButton> 了解更多信息。
       </p>
       {
-        // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="social-links">社交链接：</div>
             <Socials />
           </div>
         )
@@ -73,7 +70,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>精选文章 🌟</h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
@@ -92,7 +89,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       recentPosts.length > 0 && (
         <section id="recent-posts">
-          <h2>Recent Posts</h2>
+          <h2>最新文章 📝</h2>
           <ul>
             {recentPosts.map(
               ({ data, slug }, index) =>
@@ -111,7 +108,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
-        All Posts
+        查看所有文章
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
@@ -130,7 +127,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply pb-6 pt-8;
   }
   #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+    @apply my-4 inline-block bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-3xl font-bold text-transparent sm:my-8 sm:text-5xl;
   }
   #hero .rss-link {
     @apply mb-6;
@@ -139,13 +136,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
   #hero p {
-    @apply my-2;
+    @apply my-2 text-lg leading-relaxed;
   }
   .social-wrapper {
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
   }
   .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+    @apply mb-1 mr-2 whitespace-nowrap text-lg font-medium sm:mb-0;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
@@ -155,7 +152,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   #featured h2,
   #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
+    @apply mb-8 text-center text-2xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
